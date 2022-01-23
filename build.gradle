@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'war'
+    id "org.sonarqube" version "3.3"
 }
 
 group = 'com.example'
@@ -21,4 +22,13 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+sonarqube {
+    properties {
+        property "sonar.sourceEncoding", "UTF-8"
+                property "sonar.projectName", "springboot-tomcat-gradle-war"
+                property "sonar.host.url", "http://18.212.59.104:9000"
+                property "sonar.login", "3aa29c163717cbe1fe631d3130058c394b56e13f"
+    }
 }
