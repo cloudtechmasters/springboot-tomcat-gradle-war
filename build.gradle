@@ -21,7 +21,7 @@ plugins {
     id 'war'
     id "org.sonarqube" version "3.3"
 }
-
+apply plugin: 'jacoco'
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
@@ -39,7 +39,17 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+jacoco{
+  toolVersion = "${jacocoVersion}"
+}
 
+jacocoTestReport {
+ reports{
+  html.enabled=true
+  xml.enabled=true
+  csv.enabled=true
+ }
+}
 sonarqube {
     properties {
         property "sonar.sourceEncoding", "UTF-8"
